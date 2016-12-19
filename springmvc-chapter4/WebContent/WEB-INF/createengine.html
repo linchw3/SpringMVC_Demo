@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+  <html xmlns:th="http://www.thymeleaf.org">
+  <head>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+  <!--Let browser know website is optimized for mobile
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  -->
+  
+  
+  </head>
+
+  <body>
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  
+  <!--   Asy 代表空  -->
+   <nav>
+    <div class="av-wrapper">
+    <a href="#" class="brand-logo">.handsome</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="login.html" >菜单</a></li>
+      <li><a href="register.html" >按钮</a></li>
+
+    </div>
+  </nav>
+  
+  
+  
+  <div class="row">
+
+      <div class="col s12 m3 l2"> <!-- Note that "m4 l3" was added -->
+        <!-- Grey navigation panel
+
+              This content will be:
+          3-columns-wide on large screens,
+          4-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+         <p>这个是侧边菜单</p>
+
+      </div>
+
+      <div class="col s12 m9 l10"> <!-- Note that "m8 l9" was added -->
+        <!-- Teal page content
+
+              This content will be:
+          9-columns-wide on large screens,
+          8-columns-wide on medium screens,
+          12-columns-wide on small screens  -->
+         
+         <form class="col s12" action="engineList.html" th:action="@{/creat}" th:object="${enginemodel}"  method="post">
+      <div class="row">
+       <div class="input-field col s6">
+          <input id="enginename" type="text" class="validate" th:text="${enginemodel.enginename}">
+          <label for="enginename">EngineName</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="enginestate" type="text" class="validate" th:text="${enginemodel.enginestate}">
+          <label for="enginestate">EngineState</label>
+        </div>
+        
+        <div class="input-field col s12">
+          <textarea id="engineInfo" class="materialize-textarea" th:text="${enginemodel.enginestate}"></textarea>
+          <label for="engineInfo">EngineInfo</label>
+        </div>
+
+        <div class="input-field col s12">
+          <p> </p>
+        </div>
+        <button class="btn waves-effect waves-light col s2 offset-s5"  type="submit" name="login">添加</button>
+      </div>
+    </form>
+          
+      </div>
+
+    </div>
+  
+  
+</body>
+</html>
