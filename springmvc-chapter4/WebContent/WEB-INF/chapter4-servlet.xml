@@ -39,6 +39,39 @@
     <!-- 视图解析器 -->
     
     
+    <!-- 获取配置文件 -->  
+    <bean id="config"  
+       class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+       <property name="locations">  
+           <list>  
+              <value>classpath:db-config.properties</value>  
+           </list>  
+       </property>  
+    </bean>  
+    <!-- 获取数据源 -->  
+   <!--   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">  -->
+    <!--  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName">  
+           <value>${db.dirverClass}</value>  
+       </property>  
+       <property name="url">  
+           <value>${db.url}</value>  
+       </property>  
+       <property name="username">  
+           <value>${db.username}</value>  
+       </property>  
+       <property name="password">  
+           <value>${db.password}</value>  
+       </property>  
+    </bean>  -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql:///springmvc?useUnicode=true&amp;characterEncoding=utf8" />
+        <property name="username" value="root"></property>
+        <property name="password" value="123"></property>
+    </bean> 
+    
+    
     
     <bean id="templateResolver"
        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
@@ -67,5 +100,17 @@
        <property name="suffix" value=".html"/ -->
        
     </bean>
+    
+    
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    
+    
+    <bean id="EngineDao" class="cn.javass.chapter4.service.EngineDao">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+    
+
     
 </beans>

@@ -2,7 +2,7 @@
   <html xmlns:th="http://www.thymeleaf.org">
   <head>
   <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
   <!--Let browser know website is optimized for mobile
@@ -39,7 +39,8 @@
           3-columns-wide on large screens,
           4-columns-wide on medium screens,
           12-columns-wide on small screens  -->
-         <p>lalala</p>
+         <h2 th:text = "${thename}"> ${enginemodel.enginename}</h2> 
+         <h2 th:text = "${enginemodel.enginename}"> ${enginemodel.enginename}</h2> 
 
       </div>
 
@@ -51,20 +52,23 @@
           8-columns-wide on medium screens,
           12-columns-wide on small screens  -->
          
-         <form class="col s12" action="engineList.html" th:action="@{/create}" th:object="${enginemodel}"  method="post">
+ <form class="col s12" action="engineList.html" th:action="@{'/update1/'+${enginemodel.enginename}}" th:object="${enginemodel}"  method="post">
       <div class="row">
-       <div class="input-field col s6">
-          <input id="enginename" type="text" class="validate" th:field="*{enginename}" />
-          <label for="enginename">EngineName</label>
-        </div>
+       <!--  <div class="input-field col s6">
+          <input id="enginename"    type="text" class="validate" th:field="*{enginename}" />
+
+        </div> -->
+       
         <div class="input-field col s6">
+         <P>update the state:</P>
           <input id="enginestate" type="text" class="validate" th:field="*{enginestate}" />
-          <label for="enginestate">EngineState</label>
+
         </div>
-        
+       
         <div class="input-field col s12">
+         <p>update the Info:</p>
           <textarea id="engineInfo" class="materialize-textarea" th:field="*{engineInfo}"></textarea>
-          <label for="engineInfo">EngineInfo</label>
+
         </div>
 
         <div class="input-field col s12">
@@ -73,7 +77,7 @@
         <button class="btn waves-effect waves-light col s2 offset-s5"  type="submit" name="login">add</button>
       </div>
     </form>
-          
+         
       </div>
 
     </div>

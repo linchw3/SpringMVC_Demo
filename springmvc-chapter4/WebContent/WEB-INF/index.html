@@ -9,54 +9,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   -->
   </head>
+
+
+
 <body>
-<p>hello worldddfdsfsd</p>
-
-
   <!--Import jQuery before materialize.js-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="js/materialize.min.js"></script>
   
-  
+
    <nav>
     <div class="av-wrapper">
     <a href="#" class="brand-logo">.handsome</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down" ></ul>
-      <li><a href="login.html" >菜单</a></li>
-      <li><a href="register.html" >按钮</a></li>
+
 
     </div>
   </nav>
   
   <div class="row">
 
-      <div class="col s12 m3 l2"> 
+     <div class = "col s2 offset-s1">
 
-         <p>这个是侧边菜单</p>
-         <p>${engineList.size()}</p>
-
+         <div class="card deep-orange lighten-5 row">
+            <div class="card-content red-text col s7 offset-s3">
+              <h6 th:text = "${list.size()}">${engineList.size()}</h6>
+            </div>
+      </div>
       </div>
 
-      <div class="col s12 m9 l10"> 
+      <div class="col s6 offset-s1">
 
            <table class="highlight">
         <thead>
           <tr>
-              <th data-field="id">引擎名字</th>
-              <th data-field="name">状态</th>
-              <th data-field="price">操作</th>
+              <th data-field="id">name</th>
+              <th data-field="name">state</th>
+              <th data-field="price">operation</th>
           </tr>
         </thead>
 
        <tbody th:remove="all-but-first">
-           <tr th:each="engine:${engineList}">
-                    <td>${engine.enginename }</td>
+           <tr th:each="engine: ${list}">
+                    <td th:text="${engine.enginename}">${engine.enginename }</td>
       
-                  <td>${engine.enginestate }</td>
+                  <td th:text = "${engine.enginestate}">${engine.enginestate }</td>
               <td>
-                <a href="${pageContext.request.contextPath}/engine/info/${engine.enginename}">详情</a>
-                <a href="${pageContext.request.contextPath}/engine/update/${engine.enginename}">更新</a>
-                <a href="${pageContext.request.contextPath}/engine/delete/${engine.enginename}">删除</a>
+                <a href="${pageContext.request.contextPath}/engine/info/${engine.enginename}"  th:href = "@{'/info1/' + ${engine.enginename}}">Info</a>
+                <a href="${pageContext.request.contextPath}/engine/update/${engine.enginename}"  th:href="@{'/update1/'+${engine.enginename}}">update</a>
+                <a href="${pageContext.request.contextPath}/engine/delete/${engine.enginename}" th:href="@{'/delete1/'+${engine.enginename}}">delete</a>
                </td>
                  </tr>
           <tr>
@@ -73,14 +74,14 @@
       </table>
       
       <br/>
-      <a href="${pageContext.request.contextPath}/create">添加用户</a><br/>
+      <a href="${pageContext.request.contextPath}/create" th:href="@{/create1}">ADD ENGINE</a><br/>
           
       </div>
 
     </div>
   
- 
-
 
 </body>
+
+
 </html>
