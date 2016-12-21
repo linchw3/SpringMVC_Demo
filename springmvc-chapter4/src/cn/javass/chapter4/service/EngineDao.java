@@ -80,5 +80,16 @@ public class EngineDao extends JdbcDaoSupport  implements EngineDaoImp{
 	public JdbcTemplate getJdbcTemplate() {
 		return jdbcTemplate;
 	}*/
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Collection<EngineModel> search(String name) {
+		// TODO Auto-generated method stub
+		System.out.println(name);
+		String searchtext = '%' + name + '%';
+		String sql="select * from engine where name like '" + searchtext + "'";
+		return this.getJdbcTemplate().query(sql, new EngineMapper());
+		//return null;
+	}
 	
 }

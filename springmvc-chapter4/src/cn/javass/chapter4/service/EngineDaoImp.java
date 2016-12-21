@@ -11,5 +11,6 @@ public interface EngineDaoImp {
 	public void update(EngineModel model);
 	public EngineModel select(String name);
 	public Collection<EngineModel> find();
+	public Collection<EngineModel> search(String name);
 	//public EngineModel selectByName(String name,String pwd);
 }

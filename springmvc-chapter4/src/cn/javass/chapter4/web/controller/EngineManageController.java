@@ -53,7 +53,9 @@ public class EngineManageController  {
             list.add(temp);  
         }  
 		System.out.println(list.size());
+		
 		model.addAttribute("list",list);
+		model.addAttribute("enginemodel", new EngineModel());
         return "index";
     }
     
@@ -146,6 +148,33 @@ public class EngineManageController  {
       
         //model.addAttribute("engineList", engineService.list());
         return "redirect:/";
+    }
+    
+    @RequestMapping(value="/search1",  method = {RequestMethod.POST})
+    public String  searchbypostusemysql(HttpServletRequest request ,Model model,EngineModel enginemodel){   
+        
+        //EngineModel engine = dao.select(enginename);
+    	//System.out.println("tefdsf" + searchname);
+        //engineService.delete(engine);
+        //dao.delete(enginename);
+    	String searchname = enginemodel.getEnginename();
+    	System.out.println("the name is ::" + searchname);
+    	Collection<EngineModel> col = dao.search(searchname);  
+        List<EngineModel> list = new ArrayList<EngineModel>();  
+        EngineModel engine;  
+        for (EngineModel temp : col) {  
+            engine = new EngineModel();  
+            engine.setEnginename(temp.getEnginename());  
+            engine.setEnginestate(temp.getEnginestate());  
+            engine.setEngineInfo(temp.getEngineInfo());  
+            list.add(temp);  
+        }  
+		System.out.println(list.size());
+		model.addAttribute("list",list);
+    			
+      
+        //model.addAttribute("engineList", engineService.list());
+        return "search";
     }
 	
 	

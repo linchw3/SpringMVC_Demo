@@ -18,7 +18,7 @@
   <script type="text/javascript" src="js/materialize.min.js"></script>
   
 
-  <nav>
+   <nav>
     <div class="av-wrapper">
     <a href="#" class="brand-logo">.handsome</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down" ></ul>
@@ -27,8 +27,6 @@
     </div>
   </nav>
   
-    
-  
   <div class="row">
 
      <div class = "col s2 offset-s1">
@@ -36,50 +34,11 @@
          <div class="card deep-orange lighten-5 row">
             <div class="card-content red-text col s7 offset-s3">
               <h6 th:text = "${list.size()}">${engineList.size()}</h6>
-         </div>
- 
- 
- 
- 
-         
-     <form class="col s12" action="engineList.html" th:action="@{/search1}" th:object="${enginemodel}"  method="post">
-      <div class="row">
-
-        <div class="input-field col s12">
-          <input id="enginestate" type="text" class="validate" th:field="*{enginename}" />
-          <label for="enginestate">search</label>
-        </div>
-        
-
-
-
-        <button class="btn waves-effect waves-light col s6 offset-s3"  type="submit" name="login">find</button>
+            </div>
       </div>
-    </form>
-         
-         
-          
-          
       </div>
-  </div>
-
-
-
-
 
       <div class="col s6 offset-s1">
-      
-      
-      
-      
-      
-
-      
-      
-      
-      
-      
-      
 
            <table class="highlight">
         <thead>
@@ -115,7 +74,7 @@
       </table>
       
       <br/>
-      <a href="${pageContext.request.contextPath}/create" th:href="@{/create1}">ADD ENGINE</a><br/>
+      <a href="${pageContext.request.contextPath}/create" th:href="@{/}">BACK</a><br/>
           
       </div>
 
